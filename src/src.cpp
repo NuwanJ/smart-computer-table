@@ -1,29 +1,33 @@
 
 #include <Arduino.h>
 #include "define.h"
+#include "neopixel.h"
 
-// This is to hide non-test related source code.
-// https://docs.platformio.org/en/latest/plus/unit-testing.html
 #ifndef UNIT_TEST
 
-void setup() {
-    // put your setup code here, to run once:
+void setup()
+{
 
     // Enables Serial Communication with baudRate of 115200
     Serial.begin(115200);
     Serial.println("PlatformIO ESP32 Boilerplate started...");
 
-    pinMode(PIN_LED_INBUILT, OUTPUT);
+    neopixel_begin();
 }
 
-void loop() {
-    // put your main code here, to run repeatedly:
+void loop()
+{
+    // Red
+    setColor(255, 0, 0);
+    delay(3000);
 
-    digitalWrite(PIN_LED_INBUILT, HIGH);
-    delay(1000);
-    digitalWrite(PIN_LED_INBUILT, LOW);
-    delay(1000);
+    // Green
+    setColor(0, 255, 0);
+    delay(3000);
 
+    // Blue
+    setColor(0, 0, 255);
+    delay(3000);
 }
 
 #endif
