@@ -5,8 +5,8 @@
 #include "Arduino.h"
 #include <Adafruit_NeoPixel.h>
 
-#define NUMPIXELS 60
-#define PIN_NEOPIXEL 19
+#define NUMPIXELS 30
+#define PIN_NEOPIXEL 25
 
 extern Adafruit_NeoPixel strip;
 

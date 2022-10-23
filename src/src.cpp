@@ -18,14 +18,17 @@ void setup()
 void loop()
 {
     // Red
+    Serial.println("Red");
     setColor(255, 0, 0);
     delay(3000);
 
     // Green
+    Serial.println("Green");
     setColor(0, 255, 0);
     delay(3000);
 
     // Blue
+    Serial.println("Blue");
     setColor(0, 0, 255);
     delay(3000);
 }
