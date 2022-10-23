@@ -3,34 +3,23 @@
 #include "define.h"
 #include "neopixel.h"
 
-#ifndef UNIT_TEST
-
 void setup()
 {
-
-    // Enables Serial Communication with baudRate of 115200
     Serial.begin(115200);
-    Serial.println("PlatformIO ESP32 Boilerplate started...");
-
     neopixel_begin();
+
+    neopixel_setMode(32);
 }
 
 void loop()
 {
-    // Red
-    Serial.println("Red");
-    setColor(255, 0, 0);
-    delay(3000);
+    ws2812fx_1.service();
+    ws2812fx_2.service();
 
-    // Green
-    Serial.println("Green");
-    setColor(0, 255, 0);
-    delay(3000);
+    recvChar(); // read serial comm
 
-    // Blue
-    Serial.println("Blue");
-    setColor(0, 0, 255);
-    delay(3000);
+    if (scmd_complete)
+    {
+        process_command();
+    }
 }
-
-#endif
