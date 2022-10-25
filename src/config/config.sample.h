@@ -10,4 +10,9 @@
 #define WIFI_SSID ""
 #define WIFI_PASSWORD ""
 
+#define MQTT_SERVER "127.0.0.1"
+#define MQTT_PORT 1883
+#define MQTT_CLIENT "sample"
+#define MQTT_USERNAME "user"
+#define MQTT_PASSWORD "password"
 #endif

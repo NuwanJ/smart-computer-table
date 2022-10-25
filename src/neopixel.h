@@ -1,5 +1,3 @@
-
-// Input a value 0 to 255 to get a color value.
 #pragma once
 
 #include "Arduino.h"
