@@ -20,7 +20,10 @@ extern bool scmd_complete;
 
 void neopixel_begin();
 
-void setColor(uint8_t r, uint8_t g, uint8_t b);
+void neopixel_start();
+void neopixel_stop();
+
+void neopixel_setColor(uint8_t r, uint8_t g, uint8_t b);
 
 void process_command();
 void process_command(char *cmd);

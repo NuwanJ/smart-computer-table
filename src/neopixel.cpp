@@ -12,19 +12,27 @@ void neopixel_begin()
     ws2812fx_1.init();
     ws2812fx_1.setBrightness(NEOPIXEL_BRIGHTNESS);
     ws2812fx_1.setSpeed(1000);
-    // ws2812fx_1.setColor(0x007BFF);
-    ws2812fx_1.setMode(FX_MODE_STATIC);
-    ws2812fx_1.start();
 
     ws2812fx_2.init();
     ws2812fx_2.setBrightness(NEOPIXEL_BRIGHTNESS);
     ws2812fx_2.setSpeed(1000);
-    // ws2812fx_2.setColor(0x007BFF);
-    ws2812fx_2.setMode(FX_MODE_STATIC);
-    ws2812fx_2.start();
+
+    neopixel_setColor(0, 50, 255);
+    neopixel_setMode(FX_MODE_STATIC);
 
     printModes();
     printUsage();
+}
+
+void neopixel_start()
+{
+    ws2812fx_1.start();
+    ws2812fx_2.start();
+}
+void neopixel_stop()
+{
+    ws2812fx_1.stop();
+    ws2812fx_2.stop();
 }
 
 void neopixel_setMode(uint8_t mode)
@@ -33,7 +41,7 @@ void neopixel_setMode(uint8_t mode)
     ws2812fx_2.setMode(mode);
 }
 
-void setColor(uint8_t r, uint8_t g, uint8_t b)
+void neopixel_setColor(uint8_t r, uint8_t g, uint8_t b)
 {
     ws2812fx_1.setColor(r, g, b);
     ws2812fx_2.setColor(r, g, b);
@@ -48,6 +56,17 @@ void process_command(char *cmd)
 void process_command()
 {
     Serial.println(scmd);
+    neopixel_start();
+
+    if (strcmp(scmd, "stop") == 0)
+    {
+        neopixel_stop();
+    }
+    if (strcmp(scmd, "start") == 0)
+    {
+        neopixel_start();
+    }
+
     if (strcmp(scmd, "b+") == 0)
     {
         ws2812fx_1.increaseBrightness(25);
