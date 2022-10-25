@@ -10,10 +10,10 @@ void setup()
     Serial.begin(115200);
     neopixel_begin();
 
-    neopixel_setMode(32);
-
     beginWiFi();
     beginMQTT();
+
+    subscribe();
 }
 
 void loop()

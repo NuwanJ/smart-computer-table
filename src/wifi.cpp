@@ -19,4 +19,6 @@ void beginWiFi()
             ESP.restart();
         }
     }
+    Serial.println("");
+    Serial.println("WiFi: Connected");
 }

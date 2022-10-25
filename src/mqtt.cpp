@@ -8,13 +8,17 @@ char tempString[256];
 void beginMQTT()
 {
     client.setServer(MQTT_SERVER, MQTT_PORT);
-    client.connect(MQTT_CLIENT, MQTT_USERNAME, MQTT_PASSWORD);
+
+    // client.connect(MQTT_CLIENT, MQTT_USERNAME, MQTT_PASSWORD);
+    client.connect(MQTT_CLIENT);
+
     client.setCallback(callback);
 
     if (!client.connected())
     {
         reconnect();
     }
+    Serial.println("MQTT: Connected");
 }
 
 void subscribe()
@@ -35,17 +39,18 @@ void callback(char *topic, byte *message, unsigned int length)
 
     if (String(topic).equals(TOPIC_UPDATE))
     {
-        if (strncmp(msg, "m ", 2) == 0)
-        {
-            uint8_t m = (uint8_t)atoi(msg + 2);
-            neopixel_setMode(m);
+        process_command(msg);
+        // if (strncmp(msg, "m ", 2) == 0)
+        // {
+        //     uint8_t m = (uint8_t)atoi(msg + 2);
+        //     neopixel_setMode(m);
 
-            Serial.printf("Set mode to %d - %s\n", m, ws2812fx_1.getModeName(ws2812fx_1.getMode()));
+        //     Serial.printf("Set mode to %d - %s\n", m, ws2812fx_1.getModeName(ws2812fx_1.getMode()));
 
-            // Update via Status Channel
-            sprintf(tempString, "Set mode to %d - %s\n", m, ws2812fx_1.getModeName(ws2812fx_1.getMode()));
-            client.publish(TOPIC_STATUS, tempString, true);
-        }
+        //     // Update via Status Channel
+        //     sprintf(tempString, "Set mode to %d - %s\n", m, ws2812fx_1.getModeName(ws2812fx_1.getMode()));
+        //     client.publish(TOPIC_STATUS, tempString, true);
+        // }
     }
 }
 

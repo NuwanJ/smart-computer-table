@@ -1,4 +1,5 @@
 #include "neopixel.h"
+#include "mqtt.h"
 
 WS2812FX ws2812fx_1 = WS2812FX(LED_COUNT_1, LED_PIN_1, NEO_GRB + NEO_KHZ800);
 WS2812FX ws2812fx_2 = WS2812FX(LED_COUNT_2, LED_PIN_2, NEO_GRB + NEO_KHZ800);
@@ -38,8 +39,15 @@ void setColor(uint8_t r, uint8_t g, uint8_t b)
     ws2812fx_2.setColor(r, g, b);
 }
 
+void process_command(char *cmd)
+{
+    sprintf(scmd, "%s", cmd);
+    process_command();
+}
+
 void process_command()
 {
+    Serial.println(scmd);
     if (strcmp(scmd, "b+") == 0)
     {
         ws2812fx_1.increaseBrightness(25);
@@ -95,10 +103,11 @@ void process_command()
         uint8_t m = (uint8_t)atoi(scmd + 2);
         neopixel_setMode(m);
 
-        Serial.print(F("Set mode to: "));
-        Serial.print(ws2812fx_1.getMode());
-        Serial.print(" - ");
-        Serial.println(ws2812fx_1.getModeName(ws2812fx_1.getMode()));
+        Serial.printf("Set mode to %d - %s\n", m, ws2812fx_1.getModeName(ws2812fx_1.getMode()));
+
+        // Update via Status Channel
+        sprintf(tempString, "Set mode to %d - %s\n", m, ws2812fx_1.getModeName(ws2812fx_1.getMode()));
+        client.publish(TOPIC_STATUS, tempString, true);
     }
 
     if (strncmp(scmd, "c ", 2) == 0)

@@ -23,6 +23,7 @@ void neopixel_begin();
 void setColor(uint8_t r, uint8_t g, uint8_t b);
 
 void process_command();
+void process_command(char *cmd);
 
 void neopixel_setMode(uint8_t mode);
 void printUsage();
