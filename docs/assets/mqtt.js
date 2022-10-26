@@ -68,4 +68,5 @@ function onMessageArrived(message) {
   const topic = message.destinationName;
 
   console.log(topic, result);
+  $("#status").text(result);
 }
