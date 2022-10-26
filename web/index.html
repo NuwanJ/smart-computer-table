@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>Smart Table Controller</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+    <link href="./assets/color-picker/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container p-3">
+        <div class="row">
+            <div class="col col-sm-12 col-md-10 col-lg-6 mx-auto">
+
+                <!-- Start / Stop -->
+                <div class="row pt-4 px-5">
+                    <div class="col p-0 d-flex flex-row gap-4 justify-content-around">
+                        <button class="btn btn-primary w-50">Start</button>
+                        <button class="btn btn-primary w-50">Stop</button>
+                    </div>
+                </div>
+
+                <!-- Brightness -->
+                <div class="row pt-4">
+                    <div class="col col-12 col-sm-12 col-md-4 d-flex align-items-center">Brightness (0 - 100)</div>
+                    <div class="col d-flex align-items-center">
+                        <input id="brightness-multi" class="multi-range" min="0" max="255" value="128"
+                            style="width: 100%;" type="range" />
+                    </div>
+                    <div class="col col-3 col-sm-2">
+                        <input id="brightness-txt" type="number" class="form-control form-control-sm" value="0" />
+                    </div>
+                </div>
+
+                <!-- Speed -->
+                <div class="row pt-4">
+                    <div class="col col-12 col-sm-12 col-md-4 d-flex align-items-center">Speed (0 - 999)</div>
+                    <div class="col d-flex align-items-center">
+                        <input id="speed-multi" class="multi-range" min="0" max="999" value="200" style="width: 100%;"
+                            type="range" />
+                    </div>
+                    <div class="col col-3 col-sm-2">
+                        <input id="speed-txt" type="number" class="form-control form-control-sm" value="0" />
+                    </div>
+                </div>
+
+                <!-- Mode -->
+                <div class="row pt-4">
+                    <div class="col col-12 col-sm-12 col-md-4 d-flex align-items-center">Mode</div>
+                    <div class="col d-flex align-items-center">
+                        <select class="form-select form-select-sm" aria-label="">
+                            <option value="1">Mode 1</option>
+                            <option value="2">Mode 2</option>
+                            <option value="3">Mode 3</option>
+                        </select>
+                        <!-- </div>
+                    <div class="col col-3 col-sm-2">
+                        &nbsp; -->
+                    </div>
+                </div>
+
+                <!-- Color Picker -->
+                <div class="row pt-4">
+                    <div class="col col-12 col-sm-12 col-md-4 d-flex align-items-center">Color</div>
+                    <div class="col d-flex align-items-center">
+                        <input id="color-box" type="text" class="form-control form-control-sm" value="" readonly />
+                    </div>
+                    <div class="col col-auto">
+                        <button id="color-picker" class="btn btn-primary btn-sm"><i
+                                class="fa fa-solid fa-eye-dropper"></i></button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+<script src="./assets/mqtt.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/js/all.min.js"
+    integrity="sha512-yk7SvYYZqGS11tWcb6cyoKiwgrNBeCHC7RebrVa0QOySVjh6WjEjaBaBue+VvDBHEfAGa0Z8/b6+LhoGSeweaw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./assets/color-picker/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+<script src="./assets/index.js">
+</script>
+
+</html>
