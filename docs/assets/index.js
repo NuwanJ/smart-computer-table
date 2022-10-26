@@ -34,7 +34,17 @@ $(document).ready(() => {
     })
     .trigger("change");
 
-  // Mode
+  // Moad Load
+  $.getJSON("modes.json", (modes) => {
+    for (const [key, value] of Object.entries(modes)) {
+      console.log(key, value);
+      $("#mode-selector").append(
+        `<option value="${key}">${key} - ${value}</option>`
+      );
+    }
+  });
+
+  // Mode Select
   $("#mode-selector").change(() => {
     const mode = $("#mode-selector").val();
     console.log("Mode: ", mode);
