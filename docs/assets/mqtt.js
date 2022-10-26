@@ -47,7 +47,7 @@ function onConnect() {}
 
 function sendCommand(text) {
   try {
-    message = new Paho.MQTT.Message(text + "\n");
+    message = new Paho.MQTT.Message(text);
     message.destinationName = TOPIC_UPDATE;
     client.send(message);
 
