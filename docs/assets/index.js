@@ -37,7 +37,6 @@ $(document).ready(() => {
   // Moad Load
   $.getJSON("modes.json", (modes) => {
     for (const [key, value] of Object.entries(modes)) {
-      console.log(key, value);
       $("#mode-selector").append(
         `<option value="${key}">${key} - ${value}</option>`
       );
@@ -62,5 +61,25 @@ $(document).ready(() => {
 
     const color = CP.HEX([r, g, b]).toString().replace("#", "");
     sendCommand(`c 0x${color}`);
+  });
+
+  // Settings defaults
+  const settings = JSON.parse(localStorage.getItem("settings"));
+  $("#inputServer").val(settings.server);
+  $("#inputPort").val(settings.port);
+  $("#inputPath").val(settings.path);
+  $("#inputUserName").val(settings.userName);
+  $("#inputPassword").val(settings.password);
+
+  $("#saveSettings").click(() => {
+    const settings = {
+      server: $("#inputServer").val(),
+      port: Number($("#inputPort").val()),
+      path: $("#inputPath").val(),
+      userName: $("#inputUserName").val(),
+      password: $("#inputPassword").val(),
+    };
+    localStorage.setItem("settingsNew", JSON.stringify(settings));
+    location.reload();
   });
 });

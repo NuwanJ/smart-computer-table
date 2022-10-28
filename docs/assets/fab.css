@@ -1,0 +1,9 @@
+.float {
+    position: fixed;
+    /* width: 32px; */
+    /* height: 32px; */
+    bottom: 12px;
+    right: 12px;
+    border-radius: 50px;
+    text-align: center;
+}

@@ -6,6 +6,8 @@ const def_settings = {
   server: "broker.hivemq.com",
   port: 8000,
   path: "/",
+  userName: "",
+  password: "",
 };
 
 const saved_settings = localStorage.getItem("settings");
@@ -21,16 +23,16 @@ const client_id = "client_" + Math.random().toString(36).substring(2, 15);
 var client = new Paho.MQTT.Client(mqtt_server, mqtt_port, mqtt_path, client_id);
 
 function mqttConnect() {
+  client.userName = settings.userName;
+  client.password = settings.password;
+
   client.connect({
     onSuccess: onConnect,
-    // userName: "swarm_user",
-    // password: "swarm_usere15",
     useSSL: true,
     keepAliveInterval: 360,
     cleanSession: false,
     onSuccess: () => {
       console.log(">> MQTT: Success");
-      //   onConnect();
 
       client.onMessageArrived = onMessageArrived;
       client.onConnectionLost = onConnectionLost;
@@ -62,7 +64,6 @@ function onConnectionLost(responseObject) {
   }
 }
 
-function update(str) {}
 function onMessageArrived(message) {
   const result = message.payloadString.trim();
   const topic = message.destinationName;

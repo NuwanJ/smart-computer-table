@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
     <link href="./assets/color-picker/style.css" rel="stylesheet">
+    <link href="./assets/fab.css" rel="stylesheet">
 
 </head>
 
@@ -62,9 +63,6 @@
                         <select id="mode-selector" class="form-select form-select-sm"
                             style="color: white; background-color: #262626;" aria-label="">
                         </select>
-                        <!-- </div>
-                    <div class="col col-3 col-sm-2">
-                        &nbsp; -->
                     </div>
                 </div>
 
@@ -91,6 +89,73 @@
         </div>
     </div>
 
+    <button type="button" class="btn btn-dark float" style="border-radius: 100px; padding: 10px;" data-bs-toggle="modal"
+        data-bs-target="#settingsModal">
+        <i class="fas fa-cog fa-2x"></i>
+    </button>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsModalLabel">MQTT Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Server Name -->
+                    <div class="mb-1 row">
+                        <label for="inputServer" class="col-sm-3 col-form-label small">Server</label>
+                        <div class="col">
+                            <input type="text" class="form-control form-control-sm" id="inputServer">
+                        </div>
+                    </div>
+
+                    <!-- Server Port -->
+                    <div class="mb-1 row">
+                        <label for="inputPort" class="col-sm-3 col-form-label small">Port</label>
+                        <div class="col">
+                            <input type="number" class="form-control form-control-sm" id="inputPort" value="1883">
+                        </div>
+                    </div>
+
+                    <!-- Server Path -->
+                    <div class="mb-1 row">
+                        <label for="inputPath" class="col-sm-3 col-form-label small">Path</label>
+                        <div class="col">
+                            <input type="text" class="form-control form-control-sm" id="inputPath" value="/">
+                        </div>
+                    </div>
+
+                    <!-- Username -->
+                    <div class="mb-1 row">
+                        <label for="inputUserName" class="col-sm-3 col-form-label small">Username</label>
+                        <div class="col">
+                            <input type="text" class="form-control form-control-sm" id="inputUserName" value=""
+                                placeholder="optional">
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-1 row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label small">Password</label>
+                        <div class="col">
+                            <input type="password" class="form-control form-control-sm" id="inputPassword" value=""
+                                placeholder="optional">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="saveSettings" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
